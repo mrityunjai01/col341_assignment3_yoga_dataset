@@ -319,22 +319,14 @@ class Movenet(object):
 
     return keypoints_with_scores
 
-  def detect(self, input_image: np.ndarray, image_height, image_width):
+  def detect(self, input_image: np.ndarray, image_height, image_width, reset_crop_region=False):
     if (self._crop_region is None) or reset_crop_region:
-      # Set crop region for the first frame.
       self._crop_region = self.init_crop_region(image_height, image_width)
 
-    # Detect pose using the crop region inferred from the detection result in
-    # the previous frame
     keypoint_with_scores = self._run_detector(
         input_image,
         self._crop_region,
         crop_size=(self._input_height, self._input_width))
-    # Calculate the crop region for the next frame
-    self._crop_region = self._determine_crop_region(keypoint_with_scores,
-                                                    image_height, image_width)
-    # Convert the keypoints with scores to a Person data type
-    # print(keypoints_with_scores.shape)
-    # print(type(keypoints_with_scores))
+    self._crop_region = self._determine_crop_region(keypoint_with_scores, image_height, image_width)
 
     return keypoints_with_scores
