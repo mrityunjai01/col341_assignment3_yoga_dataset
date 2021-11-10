@@ -334,7 +334,7 @@ class Movenet(object):
         value is True.
 
     Returns:
-      An array of shape [17, 3] representing the keypoint coordinates and
+      An array of shape [17, 2] representing the keypoint coordinates and
       scores.
     """
     image_height, image_width, _ = input_image.shape
@@ -354,5 +354,4 @@ class Movenet(object):
 
     # Convert the keypoints with scores to a Person data type
 
-    return person_from_keypoints_with_scores(keypoint_with_scores, image_height,
-                                             image_width)
+    return keypoints_with_scores[:, :2]
