@@ -334,8 +334,8 @@ class Movenet(object):
     self._crop_region = self._determine_crop_region(keypoint_with_scores,
                                                     image_height, image_width)
     # Convert the keypoints with scores to a Person data type
-    print(keypoints_with_scores.shape)
-    print(type(keypoints_with_scores))
+    # print(keypoints_with_scores.shape)
+    # print(type(keypoints_with_scores))
     keypoints_with_scores[:, 0] *= image_height
 
     keypoints_with_scores[:, 1] *= image_width
