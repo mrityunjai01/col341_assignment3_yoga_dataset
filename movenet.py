@@ -336,8 +336,5 @@ class Movenet(object):
     # Convert the keypoints with scores to a Person data type
     # print(keypoints_with_scores.shape)
     # print(type(keypoints_with_scores))
-    keypoints_with_scores[:, 0] *= image_height
-
-    keypoints_with_scores[:, 1] *= image_width
 
     return keypoints_with_scores
