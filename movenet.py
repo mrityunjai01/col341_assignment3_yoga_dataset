@@ -337,7 +337,7 @@ class Movenet(object):
       An array of shape [17, 2] representing the keypoint coordinates and
       scores.
     """
-    image_height, image_width, _ = input_image.shape
+    _, image_height, image_width, _ = input_image.shape
     if (self._crop_region is None) or reset_crop_region:
       # Set crop region for the first frame.
       self._crop_region = self.init_crop_region(image_height, image_width)
