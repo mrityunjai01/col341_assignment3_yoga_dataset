@@ -340,4 +340,4 @@ class Movenet(object):
 
     keypoints_with_scores[:, 1] *= image_width
 
-    return keypoints_with_scores[:, :2]
+    return keypoints_with_scores
