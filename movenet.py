@@ -320,7 +320,7 @@ class Movenet(object):
     return keypoints_with_scores
 
   def detect(self, input_image: np.ndarray, reset_crop_region=True):
-    _, image_height, image_width, _ = input_image.shape
+    image_height, image_width, _ = input_image.shape
     print(type(input_image))
     if (self._crop_region is None) or reset_crop_region:
       self._crop_region = self.init_crop_region(image_height, image_width)
