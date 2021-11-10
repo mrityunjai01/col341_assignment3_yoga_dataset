@@ -319,27 +319,7 @@ class Movenet(object):
 
     return keypoints_with_scores
 
-  def detect(self,
-             input_image: np.ndarray,
-             reset_crop_region: bool = False) -> Person:
-    """Run detection on an input image.
-
-    Args:
-      input_image: A [height, width, 3] RGB image. Note that height and width
-        can be anything since the image will be immediately resized according to
-        the needs of the model within this function.
-      reset_crop_region: Whether to use the crop region inferred from the
-        previous detection result to improve accuracy. Set to True if this is a
-        frame from a video. Set to False if this is a static image. Default
-        value is True.
-
-    Returns:
-      An array of shape [17, 2] representing the keypoint coordinates and
-      scores.
-    """
-
-    image_height = input_image.shape[1]
-    image_width = input_image.shape[2]
+  def detect(self, input_image: np.ndarray, image_height, image_width):
     if (self._crop_region is None) or reset_crop_region:
       # Set crop region for the first frame.
       self._crop_region = self.init_crop_region(image_height, image_width)
